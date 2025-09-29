@@ -1,19 +1,11 @@
+import os
+import json
+
+
 Job_Number = 10934
-job = [
-        {
-        'Order_Number': 10932,
-        'Name': 'Jane Smith', 
-        'Contact': {
-            'Phone': '04000000000',
-            'Email': 'a_cool_guy@yahoo.com',
-            'Address': '104 Cool st, Old York, Merica'
-        },
-        'Vechicle': ['Suzuki', 'GS500', '2012'],
-        'Work_Performed': [{'Work': 'Work', 'Hours_Spent': 'Hours'}],
-        'Work_to_Perform': [{'Work': 'Work', 'Estimated_Hours': 'Hours'}],
-        'Notes': ['Note1', 'Note2']
-        }
-]
+
+with open("jobs.json", "r") as f:
+    job = json.load(f)
 
 def display(job):
     for number in range(len(job)):
@@ -27,6 +19,9 @@ Vechicle:       {job[number]['Vechicle'][0]} {job[number]['Vechicle'][1]} {job[n
 
 def add_job(new_job):
     job.append(new_job)
+
+    with open("jobs.json", "w") as f:
+        json.dump(job, f, indent=4)
 
 def Create_Job():
     Job_Number = 10934
@@ -60,31 +55,52 @@ def Create_Job():
     
     add_job(new_job)
 
+def Clear_Screen():
+    # For Windows
+    if os.name == 'nt':
+        _ = os.system('cls')
+    # For macOS and Linux
+    else:
+        _ = os.system('clear')
 
-def Titlescreen():
-    print(f'''
-{'-'*78}
-1) View All Jobs
-2) View Specific Job
-3) Add New Job
-{'-'*78}
-''')
+def main():
+    global job
     while True:
-        try:
-            choice = int(input('Choice: '))
-
-            if 0 < choice < 5:
-                break
-            else:
-                continue
+        Clear_Screen()
         
-        except:
+        print(f'''
+    {'-'*78}
+    1) View All Jobs
+    2) View Specific Job
+    3) Add New Job
+    4) Save & Exit
+    {'-'*78}
+    ''')
+        while True:
+            try:
+                choice = int(input('    Choice: '))
+
+                if 0 < choice < 5:
+                    break
+                else:
+                    continue
+            
+            except:
+                pass
+
+        if choice == 1:
+            display(job)
+
+        elif choice == 2:
             pass
 
-    
-            
+        elif choice == 3:
+            Create_Job()
 
+        elif choice == 4:
+            quit()
+
+        input('Enter to Continue...')
         
-Create_Job()
 
-display(job)
+main()
