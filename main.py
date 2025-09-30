@@ -8,12 +8,11 @@ with open("jobs.json", "r") as f:
     job = json.load(f)
 
 def display(job):
-    for number in range(len(job)):
-        print(f'''
+    print(f'''
 {'-'*78}
-Order Number:   {job[number]['Order_Number']}
-Name:           {job[number]['Name']}
-Vechicle:       {job[number]['Vechicle'][0]} {job[number]['Vechicle'][1]} {job[number]['Vechicle'][2]}
+Order Number:   {job['Order_Number']}
+Name:           {job['Name']}
+Vechicle:       {job['Vechicle'][0]} {job['Vechicle'][1]} {job['Vechicle'][2]}
 {'-'*78}
 ''')
 
@@ -63,6 +62,22 @@ def Clear_Screen():
     else:
         _ = os.system('clear')
 
+def Search(Job_Number=None, Job_Name=None):
+    with open("jobs.json", "r") as f:
+        job = json.load(f)
+
+    for e in list(job):
+        if Job_Number == e['Order_Number'] or Job_Name == e['Name']:
+            display(e)
+
+        else:
+            print('Not Found')
+
+def Find():
+    find = input('Enter a Part Number or Name: ')
+
+    Search(find, find)
+
 def main():
     global job
     while True:
@@ -103,4 +118,4 @@ def main():
         input('Enter to Continue...')
         
 
-main()
+Find()

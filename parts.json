@@ -1,0 +1,19 @@
+[
+    {
+        "Part_Number": "XYZ-ABC-FGH",
+        "Fits": [
+            [
+                "Make",
+                "Model",
+                "Year"
+            ],
+            [
+                "Make",
+                "Model",
+                "Year"
+            ]
+        ],
+        "Quantity": 4,
+        "Location": "Aisle 5, Bay 4"
+    }
+]
