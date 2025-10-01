@@ -12,7 +12,6 @@
         "Location": "Aisle 5, Bay 4",
         "Description": "Yes"
     },
-
     {
         "Part_Number": "Benny",
         "Fits": [
@@ -31,7 +30,6 @@
         "Location": "Aisle 5, Bay 4",
         "Description": "Yes"
     },
-
     {
         "Part_Number": "Lenny",
         "Fits": [
@@ -50,7 +48,6 @@
         "Location": "Aisle 5, Bay 4",
         "Description": "Yes"
     },
-
     {
         "Part_Number": "Kenny",
         "Fits": [
@@ -69,7 +66,6 @@
         "Location": "Aisle 5, Bay 4",
         "Description": "Yes"
     },
-
     {
         "Part_Number": "Phil",
         "Fits": [
@@ -82,5 +78,23 @@
         "Quantity": 4,
         "Location": "Aisle 5, Bay 4",
         "Description": "Yes"
+    },
+    {
+        "Part_Number": "Manny",
+        "Fits": [
+            [
+                "Suzuki",
+                "DR200",
+                "1988"
+            ],
+            [
+                "Honda",
+                "XR200",
+                "1992"
+            ]
+        ],
+        "Quantity": 4,
+        "Location": "Aisle 4, Bay 17",
+        "Description": "A very useful part for bikes that require parts to be cool"
     }
 ]
