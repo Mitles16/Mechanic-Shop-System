@@ -28,24 +28,44 @@ def Search_Parts(Searching, Search_List=None):
 
     return Searched
 
-def Add_Part(Part_Number, Fits, Quantity, Location, Description):
-    New_Part = {
-        'Part_Number': Part_Number,
-        'Fits': Fits,
-        'Quantity': Quantity,
-        'Location': Location,
-        'Description': Description
-    }
+def Add_Part(Part_Number, Fits, Quantity, Location, Description, Cost_Price, RRP):
+
+    Found = False
 
     with open("parts.json", "r") as f:
         Parts = json.load(f)
 
-    Parts.append(New_Part)
+    for i in list(Parts):
+        if i['Part_Number'] == Part_Number:
+            i['Quantity'] += Quantity
+            Found = True
+
+    if Found != True:
+        New_Part = {
+            'Part_Number': Part_Number,
+            'Fits': Fits,
+            'Quantity': Quantity,
+            'Location': Location,
+            'Description': Description,
+            'Cost_Price': Cost_Price,
+            'RRP': RRP
+        }
+
+        Parts.append(New_Part)
 
     with open("parts.json", "w") as f:
         json.dump(Parts, f, indent=4)
 
+def Remove_Part(Part_Number, Quantity):
+    with open("parts.json", "r") as f:
+        Parts = json.load(f)
 
+    for i in range(len(Parts)):
+        if Parts[i]['Part_Number'] == Part_Number:
+            Parts[i]['Quantity'] -= Quantity
+
+    with open("parts.json", "w") as f:
+        json.dump(Parts, f, indent=4)
 # --- Frontend System ---
 def Search():
     while True:
@@ -93,10 +113,11 @@ def Add():
     Location = input('Location: ')
 
     Description = input('Description: ')
-        
+    Cost_Price = '$' + input('Cost Price: ')
+    RRP = '$' + input('RRP: ')
 
     Add_Part(Part_Number, Fits, Quantity, Location, Description)
 
 
 # --- Test Cases ---
-Add()
+Remove_Part('Manny', 2)
