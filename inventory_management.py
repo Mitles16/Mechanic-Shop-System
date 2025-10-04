@@ -28,7 +28,9 @@ def Search_Parts(Searching, Search_List=None):
 
     return Searched
 
-def Add_Part(Part_Number, Fits, Quantity, Location, Description, Cost_Price, RRP):
+def Add_Part(Part):
+
+    Part_Number, Fits, Quantity, Location, Description, Cost_Price, RRP = Part
 
     Found = False
 
@@ -66,58 +68,5 @@ def Remove_Part(Part_Number, Quantity):
 
     with open("parts.json", "w") as f:
         json.dump(Parts, f, indent=4)
-# --- Frontend System ---
-def Search():
-    while True:
-        Parameters = []
-
-        for e in list(['Part_Number', 'Make', 'Model', 'Year']):
-            k = input(f'{e}: ')
-            if k == '':
-                k = 'None'
-            Parameters.append(k)
-
-        print(Search_Parts(Parameters))
-
-def Add():
-    Part_Number = input('Part_Number: ')
-
-    Fits = []
-    while True:
-        Make = input('Make: ')
-        if Make == '' and len(Fits) > 0:
-            break
-        elif Make == '':
-            print('Please Enter a Model Number')
-        else:
-            while True:
-                Model = input('Model: ')
-
-                if Model == '':
-                    print('Please Enter a Model')
-
-                else:
-                    while True:
-                        Year = input('Year: ')
-
-                        if Year == '':
-                            print('Please Enter a Valid Year')
-                        else:
-                            break
-                    break
-            
-            Fits.append([Make, Model, Year])
-
-    Quantity = int(input('Quantity: '))
-
-    Location = input('Location: ')
-
-    Description = input('Description: ')
-    Cost_Price = '$' + input('Cost Price: ')
-    RRP = '$' + input('RRP: ')
-
-    Add_Part(Part_Number, Fits, Quantity, Location, Description)
-
 
 # --- Test Cases ---
-Remove_Part('Manny', 2)

@@ -1,6 +1,6 @@
 [
     {
-        "Order_Number": 10932,
+        "Invoice_Number": 10932,
         "Name": "Jane Smith",
         "Contact": {
             "Phone": "04000000000",
@@ -14,8 +14,8 @@
         ],
         "Work_Performed": [
             {
-                "Work": "Work",
-                "Hours_Spent": "Hours"
+                "Work": "Fitted Tyre",
+                "Hours": "1.5"
             }
         ],
         "Work_to_Perform": [
@@ -25,8 +25,7 @@
             }
         ],
         "Notes": [
-            "Note1",
-            "Note2"
+            "Add something cool to the bike"
         ]
     }
 ]
