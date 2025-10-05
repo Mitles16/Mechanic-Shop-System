@@ -6,7 +6,7 @@ def Search_Parts(Searching, Search_List=None):
     Part_Number, Make, Model, Year = Searching
     
     if Search_List == None:
-        with open("parts.json", "r") as f:
+        with open("package/parts.json", "r") as f:
             Parts = json.load(f)
 
     else:
@@ -34,7 +34,7 @@ def Add_Part(Part):
 
     Found = False
 
-    with open("parts.json", "r") as f:
+    with open("package/parts.json", "r") as f:
         Parts = json.load(f)
 
     for i in list(Parts):
@@ -55,16 +55,16 @@ def Add_Part(Part):
 
         Parts.append(New_Part)
 
-    with open("parts.json", "w") as f:
+    with open("package/parts.json", "w") as f:
         json.dump(Parts, f, indent=4)
 
 def Remove_Part(Part_Number, Quantity):
-    with open("parts.json", "r") as f:
+    with open("package/parts.json", "r") as f:
         Parts = json.load(f)
 
     for i in range(len(Parts)):
         if Parts[i]['Part_Number'] == Part_Number:
             Parts[i]['Quantity'] -= Quantity
 
-    with open("parts.json", "w") as f:
+    with open("package/parts.json", "w") as f:
         json.dump(Parts, f, indent=4)

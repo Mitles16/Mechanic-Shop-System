@@ -2,7 +2,7 @@
 
 A combined inventory and job management application
 
-Workshop Manager is a console-based application designed to help small workshops, garages, and repair shops manage their parts inventory and customer jobs in a single, easy-to-use system. It provides functionality for searching, adding, and removing inventory, as well as creating, updating, and searching for jobs. The system is lightweight, runs in the terminal, and will also be available as a standalone executable.
+Workshop Manager is a console-based application designed to help small workshops, garages, and repair shops manage their parts inventory and customer jobs in a single, easy-to-use system. It provides functionality for searching, adding, and removing inventory, as well as creating, updating, and searching for jobs. The system is lightweight, and runs in the terminal.
 
 ---
 
@@ -51,7 +51,7 @@ This software is intended for small workshops and garages that need a **simple y
 
 ## How to Use
 
-When you start the program (or run the `.exe` file once built), you will see a main menu:
+Once you run the file, follow the text prompts to enter in data - most screens end on an i nput, so you may need to click enter to continue in the program.
 
 ```
 (1) Search Job  
@@ -77,12 +77,9 @@ All entered data is stored and can be retrieved later.
 
 ## Installation
 
-Once packaged as an executable:
-
-1. Download the `.exe` file from the release page.
-2. Double-click to run — no installation required.
-3. The program opens in the console and is ready to use.
-
+```
+pip install Mechaic-system 
+```
 ---
 
 ## Why did I create the Mechanic System?
@@ -116,7 +113,6 @@ The system is designed to have 'few' limitations to the type of data that can be
 ## Notes
 
 * This program is currently **console-based**, but can later be expanded into a GUI.
-* The `.exe` build will make running it simple on any Windows machine.
 * Future improvements may include reporting features, export options, or a GUI frontend.
 
 ---

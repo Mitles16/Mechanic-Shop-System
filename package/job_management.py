@@ -6,7 +6,7 @@ def Search_Jobs(Searching, Search_List=None):
     Invoice_Number, Name = Searching
     
     if Search_List == None:
-        with open("jobs.json", "r") as f:
+        with open("package/jobs.json", "r") as f:
             Parts = json.load(f)
 
     else:
@@ -25,7 +25,7 @@ def Search_Jobs(Searching, Search_List=None):
 def Add_Job(Job):
     Invoice_Number, Name, Contact, Vechicle = Job
 
-    with open("jobs.json", "r") as f:
+    with open("package/jobs.json", "r") as f:
         Jobs = json.load(f)
 
     New_Job = {
