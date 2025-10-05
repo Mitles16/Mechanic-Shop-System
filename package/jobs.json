@@ -16,6 +16,10 @@
             {
                 "Work": "Fitted Tyre",
                 "Hours": "1.5"
+            },
+            {
+                "Work": "",
+                "Hours": ""
             }
         ],
         "Work_to_Perform": [
@@ -32,16 +36,113 @@
         "Invoice_Number": 10933,
         "Name": "James Smith",
         "Contact": {
-            "Phone": "03234565432",
-            "Email": "yes@outlook.com",
-            "Address": "10 cool st arogina"
+            "Phone": "0823454345",
+            "Email": "a_cool_guy@outlook.com",
+            "Address": "107 yahoo st"
+        },
+        "Vechicle": [
+            "Honda",
+            "CT100",
+            "1989"
+        ],
+        "Work_Performed": [
+            {
+                "Work": "Fitted Tyre",
+                "Hours": "1.5"
+            },
+            {
+                "Work": "Fitted Tyre",
+                "Hours": "1.5"
+            },
+            {
+                "Work": "Fitted Tyre",
+                "Hours": "1.5"
+            },
+            {
+                "Work": "Fitted Tyre",
+                "Hours": "1.5"
+            }
+        ],
+        "Work_to_Perform": [
+            "This is a cool bike"
+        ],
+        "Notes": []
+    },
+    {
+        "Invoice_Number": 10933,
+        "Name": "James Smith",
+        "Contact": {
+            "Phone": "081234245",
+            "Email": "a_cool_guy@outlook.com",
+            "Address": "Yahoo St"
         },
         "Vechicle": [
             "Honda",
             "CT110",
-            "2012"
+            "1983"
         ],
-        "Work_Performed": [],
+        "Work_Performed": [
+            {
+                "Work": "Fitted Tyre",
+                "Hours": "1.5"
+            },
+            {
+                "Work": "Fitted Tyre",
+                "Hours": "1.5"
+            },
+            {
+                "Work": "Fitted Tyre",
+                "Hours": "1.5"
+            }
+        ],
+        "Work_to_Perform": [],
+        "Notes": []
+    },
+    {
+        "Invoice_Number": 10933,
+        "Name": "James Smith",
+        "Contact": {
+            "Phone": "082345654",
+            "Email": "a_cool_guy@outlook.com",
+            "Address": "107 yahoo st"
+        },
+        "Vechicle": [
+            "Honda",
+            "CT110",
+            "1983"
+        ],
+        "Work_Performed": [
+            {
+                "Work": "Fitted Tyre",
+                "Hours": "1.5"
+            },
+            {
+                "Work": "Fitted Tyre",
+                "Hours": "1.5"
+            }
+        ],
+        "Work_to_Perform": [],
+        "Notes": []
+    },
+    {
+        "Invoice_Number": 10933,
+        "Name": "James Smith",
+        "Contact": {
+            "Phone": "082343432",
+            "Email": "a_col_guy@yahoo.com",
+            "Address": "107 yahoo st"
+        },
+        "Vechicle": [
+            "Honda",
+            "CT110",
+            "1987"
+        ],
+        "Work_Performed": [
+            {
+                "Work": "Fitted Tyre",
+                "Hours": "1.5"
+            }
+        ],
         "Work_to_Perform": [],
         "Notes": []
     }

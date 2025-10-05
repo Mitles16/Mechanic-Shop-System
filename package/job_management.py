@@ -40,16 +40,17 @@ def Add_Job(Job):
 
     Jobs.append(New_Job)
 
-    with open("jobs.json", "w") as f:
+    with open("package/jobs.json", "w") as f:
         json.dump(Jobs, f, indent=4)
 
 def Add_to_Job(Invoice_Number, Type, Work):
-    with open("jobs.json", "r") as f:
+    with open("package/jobs.json", "r") as f:
         Jobs = json.load(f)
 
-    for i in list(Jobs):
-        if i['Invoice_Number'] == Invoice_Number:
-            i[Type].append(Work)
+    
+    for job in Jobs:
+        if str(job['Invoice_Number']) == str(Invoice_Number):
+            job[Type].append(Work)
 
-    with open("jobs.json", "w") as f:
+    with open("package/jobs.json", "w") as f:
         json.dump(Jobs, f, indent=4)

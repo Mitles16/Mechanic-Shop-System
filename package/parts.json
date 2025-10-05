@@ -13,5 +13,25 @@
         "Description": "A yes part that makes the bike twice as fast.",
         "Cost_Price": "$35",
         "RRP": "$13.95"
+    },
+    {
+        "Part_Number": "ABCXYZ",
+        "Fits": [
+            [
+                "Suzuki",
+                "DR200",
+                "1988"
+            ],
+            [
+                "Honda",
+                "XR200",
+                "1992"
+            ]
+        ],
+        "Quantity": 4,
+        "Location": "Aisle 5",
+        "Description": "Makes the bikes go rly fast",
+        "Cost_Price": "$13.47",
+        "RRP": "$19.95"
     }
 ]
