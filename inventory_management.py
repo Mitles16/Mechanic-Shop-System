@@ -68,5 +68,3 @@ def Remove_Part(Part_Number, Quantity):
 
     with open("parts.json", "w") as f:
         json.dump(Parts, f, indent=4)
-
-# --- Test Cases ---
