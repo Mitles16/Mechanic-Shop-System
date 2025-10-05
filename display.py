@@ -21,59 +21,89 @@ def Clear_Lines(Lines=None):
 
 # --- Inventory System ---
 def Search_Inventory():
-    while True:
-        Parameters = []
+    Parameters = []
 
-        for e in list(['Part_Number', 'Make', 'Model', 'Year']):
-            k = input(f'{e}: ')
-            if k == '':
-                k = 'None'
-            Parameters.append(k)
+    Clear_Lines()
+    print('Searching Parts:')
+    for e in list(['Part Number', 'Make', 'Model', 'Year']):
+        k = input(f'    {e + ':':<15} ')
+        if k == '':
+            k = 'None'
+        Parameters.append(k)
 
-        print(inventory_management.Search_Parts(Parameters))
+    Clear_Lines()
+    print('Parts Found:')
+    print(f'    {'-'*78}')
+    for i in list(inventory_management.Search_Parts(Parameters)):
+        print(f'    Part Number:      {i['Part_Number']}\n \n    Fits:')
+        for e in list(i['Fits']):
+            print(f'                      {e[0]} {e[1]} {e[2]}')
+
+        print(f'\n    Quantity:         {int(i['Quantity'])}')
+        print(f'    Location:         {i['Location']}')
+
+        print(f'{'\n    Description'}')
+        print(f'        {i['Description']}')
+
+        print(f'{'\n    Cost'}')
+        print(f'        Cost Price - {i['Cost_Price']} | RRP - {i['RRP']}')
+
+        print(f'    {'-'*78}')
+
+    input('Items Searched')
 
 def Add_Inventory():
-    Part = []
-
-    Part.append(Part_Number = input('Part_Number: '))
-
-    Fits = []
     while True:
-        Make = input('Make: ')
-        if Make == '' and len(Fits) > 0:
-            break
-        elif Make == '':
-            print('Please Enter a Model Number')
-        else:
+        Clear_Lines()
+        try:
+            print('Add Part:')
+            Part = []
+
+            Part.append(input(f'    {"Part_Number:":<15}'))
+
+            Fits = []
             while True:
-                Model = input('Model: ')
-
-                if Model == '':
-                    print('Please Enter a Model')
-
+                Make = input(f'    {'Make:':<15}')
+                if Make == '' and len(Fits) > 0:
+                    break
+                elif Make == '':
+                    print('    Please Enter a Model Number')
                 else:
                     while True:
-                        Year = input('Year: ')
+                        Model = input(f'    {'Model:':<15}')
 
-                        if Year == '':
-                            print('Please Enter a Valid Year')
+                        if Model == '':
+                            print('    Please Enter a Model')
+
                         else:
+                            while True:
+                                Year = input(f'    {'Year:':<15}')
+
+                                if Year == '':
+                                    print('    Please Enter a Valid Year')
+                                else:
+                                    break
                             break
-                    break
-            
-            Fits.append([Make, Model, Year])
+                    
+                    Fits.append([Make, Model, Year])
 
-    Part.append(Fits)
+            Part.append(Fits)
 
-    Part.append(Quantity = int(input('Quantity: ')))
+            Part.append(int(input(f'    {'Quantity:':<15}')))
 
-    Part.append(Location = input('Location: '))
+            Part.append(input(f'    {'Location:':<15}'))
 
-    Part.append(Description = input('Description: '))
-    Part.append(Cost_Price = '$' + input('Cost Price: '))
-    Part.append(RRP = '$' + input('RRP: '))
+            Part.append(input(f'    {'Description:':<15}'))
+            Part.append('$' + input(f'    {'Cost Price:':<15}'))
+            Part.append('$' + input(f'    {'RRP:':<15}'))
 
-    inventory_management.Add_Part(Part)
+            inventory_management.Add_Part(Part)
+            input('Part Added')
+            break
+
+        except ValueError:
+            print("\nInvalid input.")
+            time.sleep(1)
 
 def Remove_Inventory():
     print('Stub Implimentation')
@@ -81,41 +111,89 @@ def Remove_Inventory():
 # --- Job Management ---
 
 def Search_Job():
-    print('Stub Implimentation')
+    Parameters = []
+
+    Clear_Lines()
+    print('Searching Orders:')
+    Order_Number = int(input(f'    {'Order Number:':<15}'))
+    Name = input((f'    {'Name:':<15}'))
+    if Order_Number == '':
+        Order_Number = 'None'
+
+    if Name == '':
+        Name = 'None'
+
+    Parameters.append(Order_Number)
+    Parameters.append(Name)
+
+    Clear_Lines()
+    print('Orders Found:')
+    print(f'    {'-'*78}')
+    for i in list(job_manangement.Search_Jobs(Parameters)):
+        print(f'    Order Number:      {i['Invoice_Number']}')
+        print(f'    Name:              {i['Name']}\n \n    Contact:')
+        print(f'        Phone:     {i['Contact']['Phone']}')
+        print(f'        Email:     {i['Contact']['Email']}')
+        print(f'        Address:   {i['Contact']['Address']}')
+
+        print(f'\n    Vechicle:         {i['Vechicle'][0]} {i['Vechicle'][1]} {i['Vechicle'][2]}\n')
+        
+        print('    Work Performed:')
+        for e in list(i['Work_Performed']):
+            print(f'        {e['Work']} - {e['Hours']} Hours')
+
+        print('\n    Work to Perform:')
+        for e in list(i['Work_to_Perform']):
+            print(f'        {e['Work']} - Estimated {e['Estimated_Hours']} Hours')
+
+        
+        print('\n    Notes:')
+        for e in list(i['Notes']):
+            print(f'        - {e}')
+
+
+        print(f'{'\n    Description'}')
+        print(f'    {'-'*78}')
+
+    input('Items Searched')
 
 def Add_Job():
-    print('Stub Implimentation')
+    input('Stub Implimentation')
 
 def Remove_Job():
-    print('Stub Implimentation')
+    input('Stub Implimentation')
 
 # ---  Main ---
 def main():
-    Clear_Lines()
+    
     while True:
+        Clear_Lines()
         try:
-            print('''
-  __  __           _                 _         _____           _                 
- |  \/  |         | |               (_)       / ____|         | |                
- | \  / | ___  ___| |__   __ _ _ __  _  ___  | (___  _   _ ___| |_ ___ _ __ ___  
- | |\/| |/ _ \/ __| '_ \ / _` | '_ \| |/ __|  \___ \| | | / __| __/ _ \ '_ ` _ \ 
- | |  | |  __/ (__| | | | (_| | | | | | (__   ____) | |_| \__ \ ||  __/ | | | | |
- |_|  |_|\___|\___|_| |_|\__,_|_| |_|_|\___| |_____/ \__, |___/\__\___|_| |_| |_|
-                                                      __/ |                      
-                                                     |___/                          
-                  ''')
-            Choice = int(input(f'''
-    {'-'*78}
+            print(f'''
+                  
++{'-'*82}+
+|  __  __           _                 _         _____           _                  |
+| |  \/  |         | |               (_)       / ____|         | |                 |
+| | \  / | ___  ___| |__   __ _ _ __  _  ___  | (___  _   _ ___| |_ ___ _ __ ___   |
+| | |\/| |/ _ \/ __| '_ \ / _` | '_ \| |/ __|  \___ \| | | / __| __/ _ \ '_ ` _ \  |
+| | |  | |  __/ (__| | | | (_| | | | | | (__   ____) | |_| \__ \ ||  __/ | | | | | |
+| |_|  |_|\___|\___|_| |_|\__,_|_| |_|_|\___| |_____/ \__, |___/\__\___|_| |_| |_  |
+|                                                      __/ |                       |
+|                                                     |___/                        |
++{'-'*82}+
+
+    {'-'*52}
     (1) Search Job
-    (2) Add to Job
+    (2) Add Job
     (3) Edit / Remove from Job
-    {'-'*78}
+    {'-'*52}
     (4) Search Parts
     (5) Add Part
     (6) Sell / Remove Part
-    {'-'*78}
+    {'-'*52}
     (0) Exit
-    '''))
+    ''')
+            Choice = int(input(f''))
             if Choice == 0:
                 exit()
             elif Choice == 1:
@@ -130,9 +208,9 @@ def main():
                 Add_Inventory()
             elif Choice == 6:
                 Remove_Inventory()
-        except:
-            print('Error With input')
+
+        except ValueError:
+            print("\nInvalid input, please enter a number.")
             time.sleep(1)
-            Clear_Lines()
 
 main()

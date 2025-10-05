@@ -96,5 +96,20 @@
         "Quantity": 2,
         "Location": "Aisle 4, Bay 17",
         "Description": "A very useful part for bikes that require parts to be cool"
+    },
+    {
+        "Part_Number": "Yes",
+        "Fits": [
+            [
+                "Honda",
+                "XR250",
+                "1988"
+            ]
+        ],
+        "Quantity": 1,
+        "Location": "Yellowstone",
+        "Description": "A yes part that makes the bike twice as fast.",
+        "Cost_Price": "$35",
+        "RRP": "$13.95"
     }
 ]
