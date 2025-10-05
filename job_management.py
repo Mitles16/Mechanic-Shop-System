@@ -23,7 +23,7 @@ def Search_Jobs(Searching, Search_List=None):
     return Searched
 
 def Add_Job(Job):
-    Invoice_Number, Name, Contact, Vechicle, Work_Performed, Work_to_Perform, Notes = Job
+    Invoice_Number, Name, Contact, Vechicle = Job
 
     with open("jobs.json", "r") as f:
         Jobs = json.load(f)
@@ -33,9 +33,9 @@ def Add_Job(Job):
         'Name': Name,
         'Contact': Contact,
         'Vechicle': Vechicle,
-        'Work_Performed': Work_Performed,
-        'Work_to_Perform': Work_to_Perform,
-        'Notes': Notes
+        'Work_Performed': [],
+        'Work_to_Perform': [],
+        'Notes': []
     }
 
     Jobs.append(New_Job)
@@ -73,7 +73,7 @@ def Add():
     elif Type == 2:
         Work = {
         'Work': input('Work: '),
-        'Hours': input('Estimated Hours: ')
+        'Estimated_Hours': input('Estimated Hours: ')
         }
 
         Add_to_Job(Invoice_Number, 'Work_to_Perform', Work)

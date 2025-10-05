@@ -1,8 +1,7 @@
 # --- Imports ---
 import os
-import time
 import inventory_management
-import job_manangement
+import job_management
 
 
 # --- UI Control ---
@@ -102,14 +101,21 @@ def Add_Inventory():
             break
 
         except ValueError:
-            print("\nInvalid input.")
-            time.sleep(1)
+            input('\nError with Input')
 
 def Remove_Inventory():
-    print('Stub Implimentation')
+    while True:
+        try:
+            Clear_Lines()
+            print('Sell / Remove Item:')
+            Part_Number = input(f'    {'Part Number:':<15}')
+            Quantity = int(input(f'    {'Quantity:':<15}'))
+
+            inventory_management.Remove_Part(Part_Number, Quantity)
+        except:
+            input('\nError with Input')
 
 # --- Job Management ---
-
 def Search_Job():
     Parameters = []
 
@@ -129,7 +135,7 @@ def Search_Job():
     Clear_Lines()
     print('Orders Found:')
     print(f'    {'-'*78}')
-    for i in list(job_manangement.Search_Jobs(Parameters)):
+    for i in list(job_management.Search_Jobs(Parameters)):
         print(f'    Order Number:      {i['Invoice_Number']}')
         print(f'    Name:              {i['Name']}\n \n    Contact:')
         print(f'        Phone:     {i['Contact']['Phone']}')
@@ -158,10 +164,58 @@ def Search_Job():
     input('Items Searched')
 
 def Add_Job():
-    input('Stub Implimentation')
+    while True:
+        try:
+            Clear_Lines()
+            print('Add Job:')
 
-def Remove_Job():
-    input('Stub Implimentation')
+            Job = [
+                int(input(f"    {'Invoice Number:':<15}")),
+                input(f"    {'Name:':<15}"),
+                {
+                    "Phone": input(f"    {'Phone Number:':<15}"),
+                    "Email": input(f"    {'Email:':<15}"),
+                    "Address": input(f"    {'Address:':<15}")
+                },
+                [
+                    input(f"    {'Make:':<15}"),
+                    input(f"    {'Model:':<15}"),
+                    input(f"    {'Year:':<15}")
+                ]
+            ]
+
+            job_management.Add_Job(Job)
+            input()
+            break
+
+        except:
+            input('\nError with Input')
+
+def Add_to_Job():
+    while True:
+        try:
+            Clear_Lines()
+            print('Add to Job')
+            Invoice_Number = input(f'    {'Invoice Number':<15}')
+            print(f'    (1) Work Perfomed')
+            print(f'    (2) Work to Perfom')
+            print(f'    (3) Notes')
+            Type = int(input(f'\n    Edit:'))
+            if Type == 1:
+                job_management.Add_to_Job(Invoice_Number, 'Work_Performed', {'Work': input(f'    {'Work Performed:':<15}'), 'Hours': input(f'    {'Hours:':<15}')})
+                break
+            elif Type == 2:
+                job_management.Add_to_Job(Invoice_Number, 'Work_to_Perform', {'Work': input(f'    {'Work Performed:':<15}'), 'Estimated_Hours': input(f'    {'Estimated Hours:':<15}')})
+                break
+            elif Type == 3:
+                job_management.Add_to_Job(Invoice_Number, 'Work_to_Perform', input(f'    {'Notes:':<15}'))
+                break
+            else:
+                input('\nError with Input')
+
+        except:
+            input('\nError with Input')
+
 
 # ---  Main ---
 def main():
@@ -185,7 +239,7 @@ def main():
     {'-'*52}
     (1) Search Job
     (2) Add Job
-    (3) Edit / Remove from Job
+    (3) Add to Job
     {'-'*52}
     (4) Search Parts
     (5) Add Part
@@ -201,7 +255,7 @@ def main():
             elif Choice == 2:
                 Add_Job()
             elif Choice == 3:
-                Remove_Job()
+                Add_to_Job()
             elif Choice == 4:
                 Search_Inventory()
             elif Choice == 5:
@@ -210,7 +264,6 @@ def main():
                 Remove_Inventory()
 
         except ValueError:
-            print("\nInvalid input, please enter a number.")
-            time.sleep(1)
+            input("\nInvalid input, please enter a number.")
 
 main()

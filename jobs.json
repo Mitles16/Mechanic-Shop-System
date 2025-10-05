@@ -27,5 +27,22 @@
         "Notes": [
             "Add something cool to the bike"
         ]
+    },
+    {
+        "Invoice_Number": 10933,
+        "Name": "James Smith",
+        "Contact": {
+            "Phone": "03234565432",
+            "Email": "yes@outlook.com",
+            "Address": "10 cool st arogina"
+        },
+        "Vechicle": [
+            "Honda",
+            "CT110",
+            "2012"
+        ],
+        "Work_Performed": [],
+        "Work_to_Perform": [],
+        "Notes": []
     }
 ]
